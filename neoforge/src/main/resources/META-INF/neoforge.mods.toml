@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[2,)"
 issueTrackerURL = "https://github.com/gizmo-ds/i-have-slept-mod/issues"
 license = "MIT"
 
@@ -15,16 +15,18 @@ logoFile = "i_have_slept-icon.png"
 displayURL = "https://github.com/gizmo-ds/i-have-slept-mod"
 
 [[dependencies.i_have_slept]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.i_have_slept]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.1,)"
+type = "required"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
+[[mixins]]
+config = "i_have_slept.mixins.json"
