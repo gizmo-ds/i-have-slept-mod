@@ -9,10 +9,6 @@ architectury {
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
-
-    neoForge {
-        accessTransformer { file('src/main/resources/META-INF/accesstransformer.cfg') }
-    }
 }
 
 configurations {
