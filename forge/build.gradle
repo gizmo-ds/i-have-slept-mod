@@ -3,7 +3,12 @@ plugins {
 }
 
 loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+
     forge {
+        convertAccessWideners = true
+        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+
         mixinConfig "i_have_slept.mixins.json"
     }
 }
