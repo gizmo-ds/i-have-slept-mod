@@ -8,8 +8,7 @@ public final class IHaveSlept {
     public static final String MOD_ID = "i_have_slept";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public static final GameRules.Key<GameRules.BooleanRule> BETTER_SERVER_SLEEP =
-            GameRules.register("doBetterServerSleep", GameRules.Category.SPAWNING, GameRules.BooleanRule.create(true));
+    public static GameRules.Key<GameRules.BooleanRule> BETTER_SERVER_SLEEP;
 
     public static void init() {
     }
