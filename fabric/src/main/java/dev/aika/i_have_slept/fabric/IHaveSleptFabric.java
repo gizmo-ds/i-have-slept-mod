@@ -2,15 +2,14 @@ package dev.aika.i_have_slept.fabric;
 
 import dev.aika.i_have_slept.IHaveSlept;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
+import net.minecraft.world.GameRules;
 
 public final class IHaveSleptFabric implements ModInitializer {
     @Override
     public void onInitialize() {
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
-
-        // Run our common setup.
+        IHaveSlept.BETTER_SERVER_SLEEP = GameRuleRegistry.register("doBetterServerSleep", GameRules.Category.SPAWNING, GameRuleFactory.createBooleanRule(true));
         IHaveSlept.init();
     }
 }
