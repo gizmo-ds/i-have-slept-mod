@@ -1,4 +1,6 @@
 {
   "modmenu.nameTranslation.i_have_slept": "朕已安寝",
-  "modmenu.descriptionTranslation.i_have_slept": "这个模组会在多人模式中跳过夜晚后重置所有玩家的睡眠计数，确保没有睡觉的玩家不会再遭遇夜魅。"
+  "modmenu.descriptionTranslation.i_have_slept": "这个模组会在多人模式中跳过夜晚后重置所有玩家的睡眠计数，确保没有睡觉的玩家不会再遭遇幻翼。",
+  "gamerule.doBetterServerSleep": "更好的服务端睡眠",
+  "gamerule.doBetterServerSleep.description": "跳过夜晚后重置所有玩家的睡眠计数，确保没有睡觉的玩家不会再遭遇幻翼。"
 }

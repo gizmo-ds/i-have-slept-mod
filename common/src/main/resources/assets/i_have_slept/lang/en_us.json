@@ -1,4 +1,6 @@
 {
   "modmenu.nameTranslation.i_have_slept": "I have slept",
-  "modmenu.descriptionTranslation.i_have_slept": "This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for those who didn't sleep."
+  "modmenu.descriptionTranslation.i_have_slept": "This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for those who didn't sleep.",
+  "gamerule.doBetterServerSleep": "Better Server Sleep",
+  "gamerule.doBetterServerSleep.description": "Reset sleep counters for all players after skipping the night, ensuring no phantoms spawn for those who didn't sleep."
 }
