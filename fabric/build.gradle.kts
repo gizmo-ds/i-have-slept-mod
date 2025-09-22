@@ -22,8 +22,7 @@ repositories {
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:${prop("fabric_loader_version")}")
 
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("fabric_api_version")}")
-
+    modLocalRuntime("net.fabricmc.fabric-api:fabric-api:${prop("fabric_api_version")}")
     modLocalRuntime("com.terraformersmc:modmenu:13.0.3")
 }
 
@@ -47,12 +46,5 @@ tasks {
 
     publisher {
         artifact.set(remapJar)
-
-        modrinthDepends {
-            required("fabric-api")
-        }
-        curseDepends {
-            required("fabric-api")
-        }
     }
 }

@@ -6,6 +6,8 @@
   "client": [
   ],
   "mixins": [
+    "GameRulesAccessor",
+    "GameRulesBooleanValueAccessor",
     "ServerLevelMixin"
   ],
   "injectors": {
