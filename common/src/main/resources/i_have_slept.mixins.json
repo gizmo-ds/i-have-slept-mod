@@ -6,7 +6,7 @@
   "client": [
   ],
   "mixins": [
-    "ServerWorldMixin"
+    "ServerLevelMixin"
   ],
   "injectors": {
     "defaultRequire": 1

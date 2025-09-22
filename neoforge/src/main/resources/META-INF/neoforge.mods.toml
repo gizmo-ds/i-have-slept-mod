@@ -11,7 +11,7 @@ authors = "Gizmo"
 description = '''
 This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for those who didn't sleep.
 '''
-logoFile = "i_have_slept-icon.png"
+logoFile = "i_have_slept_logo.png"
 displayURL = "https://github.com/gizmo-ds/i-have-slept-mod"
 
 [[dependencies.i_have_slept]]
@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.i_have_slept]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1,)"
+versionRange = "[1.21.4,)"
 ordering = "NONE"
 side = "BOTH"
 
