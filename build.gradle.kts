@@ -116,7 +116,7 @@ configure(prop("pub.enabled_platforms").split(",").map { project(":$it") }) {
 
         versionType.set("release")
         changelog.set(modChangelog)
-        displayName.set("I have slept ${prop("mod_version")} $platformName for $mcVersion")
+        displayName.set("I have slept ${prop("mod_version")} for $platformName $mcVersion")
         projectVersion.set("${project.version}-${project.name}")
         loaders.add(project.name)
         gameVersions.addAll(prop("pub.game_version_supports").split(","))
