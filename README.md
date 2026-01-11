@@ -5,6 +5,11 @@
 
 # I have slept
 
+[![AFDIAN](https://img.shields.io/badge/%E7%88%B1%E5%8F%91%E7%94%B5-Gizmo-%23946ce6)](https://afdian.com/a/gizmo)
+[![CurseForge Downloads](https://img.shields.io/curseforge/dt/1129410?logo=curseforge&label=CurseForge)](https://www.curseforge.com/minecraft/mc-mods/i-have-slept)
+![MC-1.21.4](https://img.shields.io/badge/MC-1.21.4-blue)
+![GitHub License](https://img.shields.io/github/license/gizmo-ds/i-have-slept-mod?label=License)
+
 This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for
 those who didn't sleep.
 
