@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/icon.png" alt="Logo" width="200" height="200">
+<img src="./assets/logo.png" alt="Logo" width="200" height="200">
 
 # I have slept
 
