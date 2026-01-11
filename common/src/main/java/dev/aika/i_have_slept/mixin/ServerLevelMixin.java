@@ -23,7 +23,6 @@ public abstract class ServerLevelMixin {
     @Shadow
     public abstract List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> predicate);
 
-    @SuppressWarnings("SpellCheckingInspection")
     @Inject(
             method = "tick",
             at = @At(

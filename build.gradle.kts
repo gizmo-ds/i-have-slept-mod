@@ -1,46 +1,31 @@
 @file:Suppress("UnstableApiUsage", "SpellCheckingInspection")
 
-import com.hypherionmc.modpublisher.plugin.ModPublisherGradleExtension
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
-import org.gradle.kotlin.dsl.add
 
 plugins {
     java
-    id("dev.architectury.loom") version "1.10-SNAPSHOT" apply false
-    id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
-    id("co.uzzu.dotenv.gradle") version "4.0.0"
-    id("com.hypherionmc.modutils.modpublisher") version "2.1.6" apply false
+    alias(libs.plugins.loom) apply false
+    alias(libs.plugins.architectury)
+    alias(libs.plugins.shadow) apply false
 }
 
-fun prop(name: String) = rootProject.property(name).toString()
-val mcVersion: String = prop("minecraft_version")
-val curseforgeToken: String = env.fetch("CF_TOKEN", "").trim()
-val modrinthToken: String = env.fetch("MODRINTH_TOKEN", "").trim()
-val modChangelog = rootProject.file("CHANGELOG.md").readText().split("###")[1].let { x -> "###$x".trim() }
+val mcVersion: String = libs.versions.minecraft.get()
+val modChangelog: String = rootProject.file("CHANGELOG.md").readText().split("###").first().let { x -> "###$x".trim() }
 
 architectury { minecraft = mcVersion }
 
 allprojects {
-    group = prop("maven_group")
-    version = "${prop("mod_version")}-$mcVersion"
+    group = mod.group
+    version = "${mod.version}-$mcVersion"
 }
 
 subprojects {
     apply(plugin = "architectury-plugin")
     apply(plugin = "dev.architectury.loom")
 
-    base.archivesName.set("${prop("archives_name")}-${project.name}")
+    val libs = rootProject.libs
 
-    var mappingsDependency: Dependency? = null
-    configure<LoomGradleExtensionAPI> {
-        silentMojangMappingsLicense()
-
-        mappingsDependency = layered {
-            officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-$mcVersion:${prop("parchment")}@zip")
-        }
-    }
+    base.archivesName.set("${mod.id}-${project.name}")
 
     repositories {
         maven("https://maven.parchmentmc.org") { name = "ParchmentMC" }
@@ -48,7 +33,15 @@ subprojects {
 
     dependencies {
         "minecraft"("net.minecraft:minecraft:$mcVersion")
-        mappingsDependency?.let { "mappings"(it) }
+        "mappings"(project.the<LoomGradleExtensionAPI>().let { it ->
+            it.silentMojangMappingsLicense()
+            it.layered {
+                officialMojangMappings()
+                libs.versions.parchment.get().let { it ->
+                    if (it.isNotEmpty()) parchment("org.parchmentmc.data:parchment-$mcVersion:$it@zip")
+                }
+            }
+        })
     }
 
     java {
@@ -66,13 +59,11 @@ subprojects {
     }
 }
 
-configure(prop("pub.enabled_platforms").split(",").map { project(":$it") }) {
-    apply(plugin = "architectury-plugin")
+configure(mod.enabled_platforms.map { project(":$it") }) {
     apply(plugin = "dev.architectury.loom")
-    apply(plugin = "com.hypherionmc.modutils.modpublisher")
+    apply(plugin = "architectury-plugin")
 
-    val platformName = project.extensions.getByName<LoomGradleExtensionAPI>("loom")
-        .platform.map { it.displayName() }.get()
+    val platformName = project.the<LoomGradleExtensionAPI>().platform.map { it.displayName() }.get()
 
     configure<dev.architectury.plugin.ArchitectPluginExtension> {
         platformSetupLoomIde()
@@ -96,29 +87,23 @@ configure(prop("pub.enabled_platforms").split(",").map { project(":$it") }) {
     tasks.processResources {
         duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
-        from(rootProject.file("LICENSE")) { rename { "LICENSE.txt" } }
+        inputs.property("version", project.version)
+
+        val privateBuild = rootProject.file("assets/private-logo.png").exists()
+        val modProperties = mapOf(
+            "version" to project.version,
+            "license" to if (privateBuild) "All Rights Reserved" else mod.license,
+        )
+        filesMatching("fabric.mod.json") { expand(modProperties) }
+        filesMatching("META-INF/neoforge.mods.toml") { expand(modProperties) }
+
+        if (privateBuild) {
+            from(rootProject.file("assets/private-logo.png")) { rename { "${mod.id}_logo.png" } }
+        } else {
+            from(rootProject.file("assets/logo.png")) { rename { "${mod.id}_logo.png" } }
+            from(rootProject.file("LICENSE.txt")) { rename { "LICENSE.txt" } }
+        }
         from(rootProject.file("third-party-licenses")) { into("third-party-licenses") }
         from(project.file("third-party-licenses")) { into("third-party-licenses") }
-        from(rootProject.file("assets/logo.png")) { rename { "${prop("archives_name")}_logo.png" } }
-        from(rootProject.file("assets/private-logo.png")) { rename { "${prop("archives_name")}_logo.png" } }
-    }
-
-    configure<ModPublisherGradleExtension> {
-        apiKeys {
-            modrinth(modrinthToken)
-            curseforge(curseforgeToken)
-        }
-
-        modrinthID.set(prop("pub.modrinth_id"))
-        curseID.set(prop("pub.curseforge_id"))
-
-        debug.set(prop("pub.debug").toBoolean())
-
-        versionType.set("release")
-        changelog.set(modChangelog)
-        displayName.set("I have slept ${prop("mod_version")} for $platformName $mcVersion")
-        projectVersion.set("${project.version}-${project.name}")
-        loaders.add(project.name)
-        gameVersions.addAll(prop("pub.game_version_supports").split(","))
     }
 }

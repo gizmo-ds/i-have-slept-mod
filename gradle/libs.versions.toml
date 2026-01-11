@@ -1,0 +1,21 @@
+[versions]
+minecraft = "1.21.4"
+parchment = "2025.03.23"
+# Dependencies
+neoforge = "21.4.154"
+fabric-loader = "0.17.2"
+fabric-api = "0.119.4+1.21.4"
+modmenu = "13.0.3"
+
+[plugins]
+architectury = { id = "architectury-plugin", version = "3.4-SNAPSHOT" }
+loom = { id = "dev.architectury.loom", version = "1.11-SNAPSHOT" }
+shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
+
+[libraries]
+## NeoForge
+neoforge-neoforge = { module = "net.neoforged:neoforge", version.ref = "neoforge" }
+## Fabric
+fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+fabric-modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }

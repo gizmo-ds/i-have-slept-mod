@@ -1,7 +1,7 @@
 architectury {
-    common(rootProject.property("enabled_platforms").toString().split(','))
+    common(mod.enabled_platforms)
 }
 
 dependencies {
-    modImplementation("net.fabricmc:fabric-loader:${rootProject.property("fabric_loader_version")}")
+    modImplementation(libs.fabric.loader)
 }
