@@ -101,7 +101,7 @@ configure(mod.enabled_platforms.map { project(":$it") }) {
             from(rootProject.file("assets/private-logo.png")) { rename { "${mod.id}_logo.png" } }
         } else {
             from(rootProject.file("assets/logo.png")) { rename { "${mod.id}_logo.png" } }
-            from(rootProject.file("LICENSE.txt")) { rename { "LICENSE.txt" } }
+            from(rootProject.file("LICENSE")) { rename { "LICENSE.txt" } }
         }
         from(rootProject.file("third-party-licenses")) { into("third-party-licenses") }
         from(project.file("third-party-licenses")) { into("third-party-licenses") }
