@@ -6,7 +6,6 @@ plugins {
 
 architectury { fabric() }
 
-fun prop(name: String) = rootProject.property(name).toString()
 val shadowBundle: Configuration by configurations.getting
 val developmentFabric: Configuration by configurations.getting
 configurations {
