@@ -17,7 +17,7 @@
     "issues": "https://github.com/gizmo-ds/i-have-slept-mod/issues",
     "sources": "https://github.com/gizmo-ds/i-have-slept-mod"
   },
-  "license": "MIT",
+  "license": "${license}",
   "icon": "i_have_slept_logo.png",
   "custom": {
     "modmenu": {
@@ -36,8 +36,8 @@
     "i_have_slept.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.15.11",
-    "minecraft": "~1.21.4",
+    "fabricloader": "*",
+    "minecraft": "~1.21.11",
     "java": ">=21"
   },
   "suggests": {

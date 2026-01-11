@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
 issueTrackerURL = "https://github.com/gizmo-ds/i-have-slept-mod/issues"
-license = "MIT"
+license = "${license}"
 
 [[mods]]
 modId = "i_have_slept"
@@ -24,7 +24,7 @@ side = "BOTH"
 [[dependencies.i_have_slept]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.4,)"
+versionRange = "[1.21.11,)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -7,7 +7,7 @@
 
 [![AFDIAN](https://img.shields.io/badge/%E7%88%B1%E5%8F%91%E7%94%B5-Gizmo-%23946ce6)](https://afdian.com/a/gizmo)
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1129410?logo=curseforge&label=CurseForge)](https://www.curseforge.com/minecraft/mc-mods/i-have-slept)
-![MC-1.21.4](https://img.shields.io/badge/MC-1.21.4-blue)
+![MC-1.21.11](https://img.shields.io/badge/MC-1.21.11-blue)
 ![GitHub License](https://img.shields.io/github/license/gizmo-ds/i-have-slept-mod?label=License)
 
 This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for
@@ -20,7 +20,7 @@ those who didn't sleep.
 
 ## What does this mod do?
 
-In Minecraft's multiplayer mode, the `playersSleepingPercentage` gamerule allows a percentage of players to sleep in
+In Minecraft's multiplayer mode, the `players_sleeping_percentage` gamerule allows a percentage of players to sleep in
 order to skip the night. However, even when the night is skipped, the sleep counter for players who didn't sleep remains
 unchanged. This leads to a situation where players who didn't participate in skipping the night will still be targeted
 by phantoms in subsequent nights, despite the night being skipped.
@@ -31,11 +31,11 @@ synced after skipping the night.
 
 ## How to use?
 
-This mod works seamlessly with the `playersSleepingPercentage` gamerule. To use it, simply set the percentage of players
+This mod works seamlessly with the `players_sleeping_percentage` gamerule. To use it, simply set the percentage of players
 required to sleep in order to skip the night by using the following command:
 
 ```shell
-/gamerule playersSleepingPercentage <value>
+/gamerule players_sleeping_percentage <value>
 ```
 
 For example, setting it to `50` means that when half of the players are sleeping, the night will be skipped. Once the
@@ -43,11 +43,11 @@ night is skipped, this mod will automatically reset the sleep counters for all p
 sleep, ensuring phantoms won't spawn for anyone in the following nights. No additional configuration is needed—just set
 the percentage, and the mod will take care of the rest!
 
-Additionally, the mod introduces a new gamerule called `doBetterServerSleep`, which allows you to enable or disable the
+Additionally, the mod introduces a new gamerule called `i_have_slept:better_server_sleep`, which allows you to enable or disable the
 sleep counter reset feature. By default, this feature is enabled. To toggle it, use the following command:
 
 ```shell
-/gamerule doBetterServerSleep <true|false>
+/gamerule i_have_slept:better_server_sleep <true|false>
 ```
 
 Set it to `true` to enable the sleep counter reset, or `false` to disable it.
