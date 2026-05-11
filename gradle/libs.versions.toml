@@ -1,21 +1,26 @@
 [versions]
 minecraft = "1.21.1"
 parchment = "2024.11.17"
-# Dependencies
-neoforge = "21.1.213"
-fabric-loader = "0.17.2"
-fabric-api = "0.116.7+1.21.1"
-modmenu = "11.0.3"
+# https://fabricmc.net/develop/
+fabric-loader = "0.19.2"
+fabric-api = "0.116.11+1.21.1"
+# https://projects.neoforged.net/neoforged/neoforge
+neoforge = "21.1.228"
+# Plugins
+shadow = "9.4.1"
+architectury-plugin = "3.4.164"
+architectury-loom = "1.14.473"
 
-[plugins]
-architectury = { id = "architectury-plugin", version = "3.4-SNAPSHOT" }
-loom = { id = "dev.architectury.loom", version = "1.11-SNAPSHOT" }
-shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }
+modmenu = "11.0.4"
 
 [libraries]
-## NeoForge
-neoforge-neoforge = { module = "net.neoforged:neoforge", version.ref = "neoforge" }
-## Fabric
+# Plugins
+shadow = { module = "com.gradleup.shadow:com.gradleup.shadow.gradle.plugin", version.ref = "shadow" }
+architectury-plugin = { module = "architectury-plugin:architectury-plugin.gradle.plugin", version.ref = "architectury-plugin" }
+architectury-loom = { module = "dev.architectury.loom:dev.architectury.loom.gradle.plugin", version.ref = "architectury-loom" }
+# Fabric
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
 fabric-modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+# NeoForge
+neoforge = { module = "net.neoforged:neoforge", version.ref = "neoforge" }

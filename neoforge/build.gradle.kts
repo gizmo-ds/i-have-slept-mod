@@ -1,15 +1,5 @@
-@file:Suppress("UnstableApiUsage", "SpellCheckingInspection")
-
 plugins {
-    alias(libs.plugins.shadow)
-}
-
-architectury { neoForge() }
-
-val shadowBundle: Configuration by configurations.getting
-val developmentNeoForge: Configuration by configurations.getting
-configurations {
-    developmentNeoForge.extendsFrom(common.get())
+    id("mcmod-platform")
 }
 
 repositories {
@@ -17,17 +7,6 @@ repositories {
 }
 
 dependencies {
-    neoForge(libs.neoforge.neoforge)
-}
-
-tasks {
-    shadowJar {
-        configurations = listOf(shadowBundle)
-        archiveClassifier.set("dev-shadow")
-    }
-
-    remapJar {
-        inputFile.set(shadowJar.flatMap { it.archiveFile })
-        dependsOn(shadowJar)
-    }
+    @Suppress("USELESS_IS_CHECK")
+    if (libs.neoforge is Provider<*>) neoForge(libs.create("neoforge")) else neoForge(libs.neoforge)
 }
