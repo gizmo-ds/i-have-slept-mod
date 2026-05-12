@@ -9,6 +9,7 @@ repositories {
 dependencies {
     implementation(libs.fabric.loader)
 
-    runtimeOnly(libs.fabric.api)
     runtimeOnly(libs.fabric.modmenu)
+
+    implementation(libs.fabric.api)
 }
