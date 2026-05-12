@@ -17,7 +17,7 @@ import java.util.function.Predicate;
 
 @Mixin(ServerLevel.class)
 public abstract class ServerLevelMixin {
-    public abstract @Shadow List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> predicate);
+    public abstract @Shadow List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> selector);
 
     public abstract @Shadow GameRules getGameRules();
 
@@ -29,7 +29,7 @@ public abstract class ServerLevelMixin {
                     shift = At.Shift.AFTER
             )
     )
-    private void onTick(BooleanSupplier hasTimeLeft, CallbackInfo ci) {
+    private void onTick(BooleanSupplier haveTime, CallbackInfo ci) {
         if (!this.getGameRules().get(IHaveSlept.BETTER_SERVER_SLEEP)) {
             return;
         }

@@ -10,14 +10,14 @@ displayName = "generated at build time"
 [[dependencies.generated-at-build-time]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21,)"
+versionRange = "[26,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.generated-at-build-time]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.11,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -20,5 +20,5 @@ data class ModInfo(
         "issues" to "https://github.com/gizmo-ds/i-have-slept-mod/issues"
     ),
 
-    val javaVersion: Int = 21
+    val javaVersion: Int = 25
 )

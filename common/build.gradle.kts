@@ -7,5 +7,5 @@ architectury {
 }
 
 dependencies {
-    modImplementation(libs.fabric.loader)
+    implementation(libs.fabric.loader)
 }

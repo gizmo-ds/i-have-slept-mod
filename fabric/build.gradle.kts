@@ -7,8 +7,8 @@ repositories {
 }
 
 dependencies {
-    modImplementation(libs.fabric.loader)
+    implementation(libs.fabric.loader)
 
-    modRuntimeOnly(libs.fabric.api)
-    modRuntimeOnly(libs.fabric.modmenu)
+    runtimeOnly(libs.fabric.api)
+    runtimeOnly(libs.fabric.modmenu)
 }

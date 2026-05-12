@@ -24,7 +24,7 @@ configurations {
 }
 
 dependencies {
-    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    common(project(path = ":common")) { isTransitive = false }
     shadowBundle(project(path = ":common", configuration = "transformProduction$platformName"))
 }
 
@@ -91,18 +91,17 @@ tasks {
 
     withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INCLUDE }
 
+    jar { archiveClassifier.set("slim") }
+
     shadowJar {
+        dependsOn(jar)
+        with(copyLicense)
+
         exclude("META-INF/maven/**/*", "META-INF/versions/**/*")
 
-        archiveClassifier.set("dev-shadow")
+        archiveClassifier.set(null)
         configurations = listOf(shadowBundle)
 
         mergeServiceFiles()
-    }
-
-    remapJar {
-        inputFile.set(shadowJar.flatMap { it.archiveFile })
-        with(copyLicense)
-        dependsOn(shadowJar)
     }
 }

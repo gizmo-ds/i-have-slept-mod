@@ -11,7 +11,7 @@ allprojects {
 }
 
 subprojects {
-    plugins.apply("dev.architectury.loom")
+    plugins.apply("dev.architectury.loom-no-remap")
 
     val libs = rootProject.libs
 
