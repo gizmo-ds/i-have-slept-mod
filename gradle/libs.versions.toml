@@ -10,7 +10,7 @@ shadow = "9.4.1"
 architectury-plugin = "3.5.166"
 architectury-loom = "1.14.473"
 
-modmenu = "18.0.0-alpha.8"
+modmenu = "18.0.0-beta.1"
 bettermodlist = "26.1.2"
 
 [libraries]

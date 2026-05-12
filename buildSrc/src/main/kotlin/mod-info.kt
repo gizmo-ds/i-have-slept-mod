@@ -8,6 +8,7 @@ data class ModInfo(
     val authors: List<String> = listOf(
         "Gizmo"
     ),
+    val contributors: List<String> = listOf(),
     // https://spdx.org/licenses/
     var license: String = "MIT",
     val description: String = """

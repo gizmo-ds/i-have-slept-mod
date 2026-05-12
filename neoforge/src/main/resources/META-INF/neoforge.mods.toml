@@ -23,3 +23,6 @@ side = "BOTH"
 
 [[mixins]]
 config = "i_have_slept.mixins.json"
+
+[modproperties.modmenu]
+links = ["modmenu.donate=https://afdian.com/a/gizmo"]
