@@ -1,15 +1,5 @@
-@file:Suppress("UnstableApiUsage", "SpellCheckingInspection")
-
 plugins {
-    alias(libs.plugins.shadow)
-}
-
-architectury { fabric() }
-
-val shadowBundle: Configuration by configurations.getting
-val developmentFabric: Configuration by configurations.getting
-configurations {
-    developmentFabric.extendsFrom(common.get())
+    id("mcmod-platform")
 }
 
 repositories {
@@ -19,18 +9,6 @@ repositories {
 dependencies {
     modImplementation(libs.fabric.loader)
 
-    modLocalRuntime(libs.fabric.api)
-    modLocalRuntime(libs.fabric.modmenu)
-}
-
-tasks {
-    shadowJar {
-        configurations = listOf(shadowBundle)
-        archiveClassifier.set("dev-shadow")
-    }
-
-    remapJar {
-        inputFile.set(shadowJar.flatMap { it.archiveFile })
-        dependsOn(shadowJar)
-    }
+    modRuntimeOnly(libs.fabric.api)
+    modRuntimeOnly(libs.fabric.modmenu)
 }
