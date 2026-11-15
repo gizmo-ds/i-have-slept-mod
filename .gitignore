@@ -49,5 +49,8 @@ bin/
 run/
 runs/
 logs/
-.architectury-transformer/
 assets/custom/
+
+### Stonecutter ###
+versions/*
+!versions/current

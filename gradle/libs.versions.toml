@@ -1,27 +1,4 @@
 [versions]
-minecraft = "26.3"
-# https://fabricmc.net/develop/
-fabric-loader = "0.20.1"
-fabric-api = "0.166.2+26.3"
-# https://projects.neoforged.net/neoforged/neoforge
-neoforge = "26.3.0.103"
-# Plugins
-shadow = "9.4.1"
-architectury-plugin = "3.5.166"
-architectury-loom = "1.14.473"
-
-modmenu = "21.0.1"
-bettermodlist = "26.3.0"
-
-[libraries]
-# Plugins
-shadow = { module = "com.gradleup.shadow:com.gradleup.shadow.gradle.plugin", version.ref = "shadow" }
-architectury-plugin = { module = "architectury-plugin:architectury-plugin.gradle.plugin", version.ref = "architectury-plugin" }
-architectury-loom = { module = "dev.architectury.loom-no-remap:dev.architectury.loom-no-remap.gradle.plugin", version.ref = "architectury-loom" }
-# Fabric
-fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
-fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
-fabric-modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
-# NeoForge
-neoforge = { module = "net.neoforged:neoforge", version.ref = "neoforge" }
-neoforge-bettermodlist = { module = "maven.modrinth:better-modlist", version.ref = "bettermodlist" }
+# Fabric Loom is selected by loom-back-compat through `loomx.loom_version` in stonecutter.properties.yaml.
+# https://projects.neoforged.net/neoforged/moddevgradle
+moddev = "2.0.148"

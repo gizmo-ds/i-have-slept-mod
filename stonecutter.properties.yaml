@@ -1,0 +1,37 @@
+#file: noinspection SpellCheckingInspection
+mod:
+  id: "i_have_slept"
+  name: "I have slept"
+  group: "dev.aika.i_have_slept"
+  version: "1.1.2"
+  license: "MIT" # https://spdx.org/licenses/
+  authors: [ "Gizmo" ]
+  contributors: [ ]
+  description: "This mod resets all players' sleep counters after skipping the night in multiplayer mode, ensuring no phantoms spawn for those who didn't sleep."
+  contact:
+    homepage: "https://github.com/gizmo-ds/i-have-slept-mod"
+    sources: "https://github.com/gizmo-ds/i-have-slept-mod"
+    issues: "https://github.com/gizmo-ds/i-have-slept-mod/issues"
+
+# https://fabricmc.net/develop/
+deps.fabric_loader: "0.20.1"
+# https://maven.fabricmc.net/net/fabricmc/fabric-loom/net.fabricmc.fabric-loom.gradle.plugin/maven-metadata.xml
+loomx.loom_version: "1.19.3"
+
+# Properties shared by every loader of a Minecraft version.
+"26.3":
+  java: "25"
+
+fabric:
+  "26.3":
+    mod.mc_compat: "~26.3" # https://dexman545.github.io/outlet-database/floaderValidator
+    deps:
+      fabric_api: "0.166.2+26.3" # https://fabricmc.net/develop/
+      modmenu: "21.0.1" # development runtime only
+
+neoforge:
+  "26.3":
+    mod.mc_compat: "[26.3, 26.4)" # https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html
+    deps:
+      neoforge: "26.3.0.103" # https://projects.neoforged.net/neoforged/neoforge
+      better_modlist: "26.3.0" # development runtime only

@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <div align="center">
 
-<img src="assets/logo.png" alt="Logo" width="200" height="200">
+<img src="assets/logo-full.png" alt="Logo" width="200" height="200">
 
 # I have slept
 
@@ -54,7 +54,7 @@ Set it to `true` to enable the sleep counter reset, or `false` to disable it.
 
 ## Sponsors
 
-[![Sponsors](https://afdian-connect.deno.dev/sponsor.svg)](https://afdian.com/a/gizmo)
+[![Sponsors](https://afdian-connect.vercel.app/sponsor.svg)](https://afdian.com/a/gizmo)
 
 ## License
 
