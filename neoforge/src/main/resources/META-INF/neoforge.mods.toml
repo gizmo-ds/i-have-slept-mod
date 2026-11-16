@@ -17,7 +17,7 @@ side = "BOTH"
 [[dependencies.generated-at-build-time]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1,)"
+versionRange = "[26.2,)"
 ordering = "NONE"
 side = "BOTH"
 
