@@ -15,7 +15,10 @@ dependencies {
     findProperty("deps.modmenu")?.let { version ->
         val modmenu = "com.terraformersmc:modmenu:$version"
         modCompileOnly(modmenu)
-        modLocalRuntime(modmenu)
+        modLocalRuntime(modmenu) {
+            exclude(group = "net.fabricmc", module = "fabric-loader")
+            exclude(group = "net.fabricmc.fabric-api")
+        }
         listOf(
             "fabric-lifecycle-events-v1",
             if (sc.current.parsed >= "1.21.9") "fabric-resource-loader-v1" else "fabric-resource-loader-v0",

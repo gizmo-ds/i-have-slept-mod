@@ -1,6 +1,7 @@
 plugins {
     id("dev.kikugie.stonecutter")
     id("net.neoforged.moddev") version libs.versions.moddev.get() apply false
+    id("net.neoforged.moddev.legacyforge") version libs.versions.moddev.get() apply false
 }
 
 stonecutter active file("versions/current")
@@ -24,7 +25,7 @@ stonecutter parameters {
     val (version, loader) = current.project.split('-', limit = 2)
 
     properties.tags(version, loader)
-    constants.match(loader, "fabric", "neoforge")
+    constants.match(loader, "fabric", "forge", "neoforge")
 
     replacements {
         string(current.parsed >= "1.21.11") {
@@ -33,6 +34,7 @@ stonecutter parameters {
                 "import net.minecraft.world.level.GameRules;",
                 "import net.minecraft.world.level.gamerules.GameRules;"
             )
+            replace("getGameRules().getBoolean(", "getGameRules().get(")
         }
     }
 }

@@ -18,6 +18,16 @@ deps.fabric_loader: "0.20.1"
 # https://maven.fabricmc.net/net/fabricmc/fabric-loom/net.fabricmc.fabric-loom.gradle.plugin/maven-metadata.xml
 loomx.loom_version: "1.19.3"
 
+"1.19.2":
+  mod.mc_releases: [ "1.19.2" ]
+  parchment:
+    minecraft_version: "1.19.2"
+    mappings_version: "2022.11.27"
+"1.20.1":
+  mod.mc_releases: [ "1.20.1" ]
+  parchment:
+    minecraft_version: "1.20.1"
+    mappings_version: "2023.09.03"
 "1.21.1":
   mod.mc_releases: [ "1.21", "1.21.1" ]
   parchment: # https://parchmentmc.org/docs/getting-started.html
@@ -43,6 +53,16 @@ loomx.loom_version: "1.19.3"
   mod.mc_releases: [ "26.4-snapshot" ]
 
 fabric:
+  "1.19.2":
+    mod.mc_compat: "1.19.2"
+    deps:
+      fabric_api: "0.77.0+1.19.2"
+      modmenu: "4.2.0-beta.2"
+  "1.20.1":
+    mod.mc_compat: "1.20.1"
+    deps:
+      fabric_api: "0.92.12+1.20.1"
+      modmenu: "7.2.2"
   "1.21.1":
     mod.mc_compat: ">1.21- <1.21.2" # https://dexman545.github.io/outlet-database/floaderValidator
     deps:
@@ -78,6 +98,16 @@ fabric:
     deps:
       fabric_api: "0.165.4+26.4"
       modmenu: "22.0.0-alpha.3"
+
+forge:
+  "1.19.2":
+    mod.mc_compat: "[1.19.2]"
+    deps:
+      forge: "1.19.2-43.5.1"
+  "1.20.1":
+    mod.mc_compat: "[1.20.1]"
+    deps:
+      forge: "1.20.1-47.4.5"
 
 neoforge:
   "1.21.1":

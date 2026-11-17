@@ -9,6 +9,8 @@
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1129410?logo=curseforge&label=CurseForge)](https://www.curseforge.com/minecraft/mc-mods/i-have-slept)
 [![GitHub License](https://img.shields.io/github/license/gizmo-ds/i-have-slept-mod?label=License)](./LICENSE)
 
+![MC-1.19.2](https://img.shields.io/badge/MC-1.19.2-blue)
+![MC-1.20.1](https://img.shields.io/badge/MC-1.20.1-blue)
 ![MC-1.21.1](https://img.shields.io/badge/MC-1.21.1-blue)
 ![MC-1.21.4](https://img.shields.io/badge/MC-1.21.4-blue)
 ![MC-26.1](https://img.shields.io/badge/MC-26.1-blue)
@@ -58,6 +60,29 @@ sleep counter reset feature. By default, this feature is enabled. To toggle it, 
 ```
 
 Set it to `true` to enable the sleep counter reset, or `false` to disable it.
+
+## Building older Minecraft versions
+
+Minecraft 1.19.2 and 1.20.1 are supported on Fabric and Forge (43.5.1 and 47.4.5 respectively).
+Both Minecraft versions target Java 17; Gradle itself requires a newer JDK (use Java 25 with the current wrapper).
+Fabric builds use the existing Loom 1.19.3 remapping plugin selected by loom-back-compat.
+
+```shell
+bash ./gradlew :1.19.2-fabric:build :1.19.2-forge:build :1.20.1-fabric:build :1.20.1-forge:build
+```
+
+The Forge nodes use ModDevGradle's legacy Forge plugin with the
+`net.minecraftforge:forge` artifact. These versions use `net.minecraftforge` packages,
+`META-INF/mods.toml` and SRG mappings, so its release jar is produced by `reobfJar`.
+Mixin refmaps and the `MixinConfigs` manifest entry are included for production loading.
+NeoForge is only targeted for the existing newer Minecraft versions.
+
+On these older versions, the gamerules use their original names:
+
+```shell
+/gamerule playersSleepingPercentage 50
+/gamerule doBetterServerSleep true
+```
 
 ## Sponsors
 

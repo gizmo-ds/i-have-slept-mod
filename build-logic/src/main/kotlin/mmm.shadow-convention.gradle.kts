@@ -12,7 +12,7 @@ val obfuscated = sc(project).current.parsed < "26"
 
 tasks {
     shadowJar {
-        archiveClassifier.set(if (obfuscated && isFabric) "dev-shadow" else null)
+        archiveClassifier.set(if (obfuscated && (isFabric || sc(project).current.parsed < "1.20.2")) "dev-shadow" else null)
 
         configurations.set(listOf(shadowCommon))
 

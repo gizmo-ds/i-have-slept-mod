@@ -49,11 +49,18 @@ tasks {
             if (isFabric) register("fabric_api", "deps.fabric_api"())
         }
 
-        filesMatching(listOf("fabric.mod.json", "pack.mcmeta", "META-INF/neoforge.mods.toml")) {
+        filesMatching(listOf("fabric.mod.json", "pack.mcmeta", "META-INF/neoforge.mods.toml", "META-INF/mods.toml")) {
             expand(props) { escapeBackslash = true }
         }
 
-        filesMatching("*.mixins.json") { expand("java" to "JAVA_${requiredJava.majorVersion}") }
+        filesMatching("*.mixins.json") {
+            expand("java" to "JAVA_${requiredJava.majorVersion}")
+            if (!isFabric && sc(project).current.parsed < "1.20.2") {
+                filter { line ->
+                    if (line.contains("\"minVersion\"")) "$line\n  \"refmap\": \"i_have_slept.refmap.json\"," else line
+                }
+            }
+        }
     }
 
     // https://github.com/projectlombok/lombok/issues/3852#issuecomment-3408877430
@@ -123,6 +130,7 @@ tasks {
         description = "Builds mod jars and copies results to `build/libs/{mod version}/`"
 
         dependsOn("shadowJar")
+        if (!isFabric && sc(project).current.parsed < "1.20.2") dependsOn("reobfJar")
 
         inputs.property("version", "mod.version"())
         from(modJar)

@@ -9,7 +9,8 @@ plugins {
 }
 
 version = "${"mod.version"().removeSuffix("-SNAPSHOT")}-${sc(project).current.version}"
-base.archivesName = "${"mod.id"()}-neoforge"
+val loader = sc(project).current.project.substringAfter('-')
+base.archivesName = "${"mod.id"()}-$loader"
 
 val localRuntime = configurations.create("localRuntime").apply {
     isCanBeResolved = true
@@ -19,7 +20,7 @@ configurations.runtimeClasspath.get().extendsFrom(localRuntime)
 
 val generateModMetadataFile = tasks.register("generateModMetadataFile") {
     group = "build"
-    description = "Generates neoforge metadata file"
+    description = "Generates Forge/NeoForge metadata file"
 
     val outputDir = layout.buildDirectory.dir("generated/mmm/resources")
     outputs.dir(outputDir)
@@ -41,13 +42,31 @@ val generateModMetadataFile = tasks.register("generateModMetadataFile") {
         "mod.contributors",
         providers.provider { sc(project).properties.rawOrNull("mod", "contributors")?.toJson()?.toString() ?: "" })
     inputs.property("stonecutter.version", providers.provider { sc(project).current.version })
+    val legacy = loader == "forge"
+    val forgeMajor = if (legacy) "deps.forge"().substringAfter('-').substringBefore('.').toInt() else 0
+    inputs.property("loader", loader)
+    inputs.property("forgeMajor", forgeMajor)
 
     doLast {
-        val outputFile = outputDir.get().file("META-INF/neoforge.mods.toml").asFile
+        val outputFile = outputDir.get().file(if (legacy) "META-INF/mods.toml" else "META-INF/neoforge.mods.toml").asFile
         outputFile.parentFile.mkdirs()
 
         val toml = Toml().read(inputFile.asFile).toMap()
         toml.let { root ->
+            if (legacy) {
+                root["loaderVersion"] = "[$forgeMajor,)"
+                root.remove("mixins")
+                @Suppress("UNCHECKED_CAST")
+                val dependencies = (root["dependencies"] as Map<String, List<MutableMap<String, Any>>>).values.flatten()
+                dependencies.forEach {
+                    it.remove("type")
+                    it["mandatory"] = true
+                    if (it["modId"] == "neoforge") {
+                        it["modId"] = "forge"
+                        it["versionRange"] = "[$forgeMajor,${forgeMajor + 1})"
+                    }
+                }
+            }
             root["license"] = "mod.license"()
             val modmenu = root.getPath<MutableMap<String, Any>>("modproperties", "modmenu") ?: mutableMapOf()
             @Suppress("UNCHECKED_CAST")

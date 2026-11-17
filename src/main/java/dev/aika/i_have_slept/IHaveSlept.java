@@ -1,7 +1,8 @@
 package dev.aika.i_have_slept;
 
 //? if >=1.21.11 {
-import net.minecraft.world.level.gamerules.GameRuleCategory; //?} else {
+import net.minecraft.world.level.gamerules.GameRuleCategory;
+import net.minecraft.world.level.gamerules.GameRule; //?} else {
 /*import dev.aika.i_have_slept.mixin.GameRulesAccessor;
 import dev.aika.i_have_slept.mixin.GameRulesBooleanValueAccessor;
 import net.minecraft.world.level.gamerules.GameRules; *///?}
@@ -14,7 +15,7 @@ public final class IHaveSlept {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
     //? if >=1.21.11 {
-    public static net.minecraft.world.level.gamerules.GameRule<Boolean> BETTER_SERVER_SLEEP; //?} else {
+    public static GameRule<Boolean> BETTER_SERVER_SLEEP; //?} else {
     /*public static GameRules.Key<GameRules.BooleanValue> BETTER_SERVER_SLEEP; *///?}
 
     public static void init() {
