@@ -61,6 +61,18 @@ sleep counter reset feature. By default, this feature is enabled. To toggle it, 
 
 Set it to `true` to enable the sleep counter reset, or `false` to disable it.
 
+> [!NOTE]
+> Gamerule IDs depend on your Minecraft version. On **1.21.11 and later**, use
+> `i_have_slept:better_server_sleep` as shown above. On **versions before 1.21.11** (including
+> 1.19.2, 1.20.1, 1.21.1 and 1.21.4), use `doBetterServerSleep` instead:
+>
+> ```shell
+> /gamerule doBetterServerSleep <true|false>
+> ```
+>
+> On these older versions, the vanilla sleeping percentage rule is also named
+> `playersSleepingPercentage` instead of `players_sleeping_percentage`.
+
 ## Building older Minecraft versions
 
 Minecraft 1.19.2 and 1.20.1 are supported on Fabric and Forge (43.5.1 and 47.4.5 respectively).
