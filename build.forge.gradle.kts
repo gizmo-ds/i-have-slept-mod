@@ -21,7 +21,7 @@ legacyForge {
     runs {
         register("client") {
             client()
-            gameDirectory = rootProject.file("runs/client/${sc.current.version}")
+            gameDirectory = rootProject.file("runs/client")
         }
         register("server") {
             server()
@@ -29,7 +29,8 @@ legacyForge {
             programArguments.add("--nogui")
         }
         configureEach {
-             disableIdeRun()
+            disableIdeRun()
+            loggingConfigFile = rootProject.file("build-logic/src/main/resources/log4j2.xml")
         }
     }
 }
