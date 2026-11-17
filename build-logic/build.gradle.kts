@@ -17,6 +17,8 @@ dependencies {
     implementation("tools.jackson.core:jackson-databind:3.2.4")
     implementation("io.hotmoka:toml4j:0.7.3")
 
-    val stonecutter = "dev.kikugie.stonecutter"
-    implementation("$stonecutter:$stonecutter.gradle.plugin:${rootProperties.getProperty("stonecutter")}")
+    fun implementationPlugin(dep: String, version: String) = implementation("$dep:$dep.gradle.plugin:$version")
+    implementationPlugin("com.gradleup.shadow", libs.versions.shadow.get())
+    implementationPlugin("dev.kikugie.stonecutter", rootProperties.getProperty("stonecutter"))
+    implementationPlugin("me.modmuss50.mod-publish-plugin", "2.2.1")
 }

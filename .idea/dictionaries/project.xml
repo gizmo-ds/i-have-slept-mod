@@ -2,13 +2,16 @@
   <dictionary name="project">
     <words>
       <w>curseforge</w>
+      <w>entrypoints</w>
       <w>fabricloader</w>
       <w>gamerule</w>
       <w>mcmod</w>
       <w>minecraft</w>
+      <w>modlist</w>
       <w>modmenu</w>
       <w>modproperties</w>
       <w>modrinth</w>
+      <w>neoforge</w>
     </words>
   </dictionary>
 </component>

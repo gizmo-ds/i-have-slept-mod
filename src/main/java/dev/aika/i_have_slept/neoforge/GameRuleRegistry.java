@@ -1,14 +1,12 @@
 package dev.aika.i_have_slept.neoforge;
 
-//? if neoforge {
+//? if neoforge && >=1.21.11 {
 /*import dev.aika.i_have_slept.IHaveSlept;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.gamerules.GameRule;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.NotNull;
 
 public class GameRuleRegistry {
-    public static final DeferredRegister<@NotNull GameRule<?>> GAME_RULE_REGISTER =
+    public static final DeferredRegister<net.minecraft.world.level.gamerules.GameRule<?>> GAME_RULE_REGISTER =
             DeferredRegister.create(Registries.GAME_RULE, IHaveSlept.MOD_ID);
 }
 *///?}

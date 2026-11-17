@@ -1,11 +1,13 @@
 {
   "required": true,
   "package": "dev.aika.i_have_slept.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "${java}",
   "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
+    "GameRulesAccessor",
+    "GameRulesBooleanValueAccessor",
     "ServerLevelMixin"
   ],
   "injectors": {

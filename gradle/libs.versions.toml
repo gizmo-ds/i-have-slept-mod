@@ -2,3 +2,4 @@
 # Fabric Loom is selected by loom-back-compat through `loomx.loom_version` in stonecutter.properties.yaml.
 # https://projects.neoforged.net/neoforged/moddevgradle
 moddev = "2.0.148"
+shadow = "9.4.1"

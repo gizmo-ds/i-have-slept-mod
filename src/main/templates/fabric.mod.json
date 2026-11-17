@@ -26,9 +26,8 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "minecraft": ">=26.3",
-    "java": ">=25",
-    "fabric-api": "*"
+    "minecraft": "${minecraft_compat}",
+    "fabric-registry-sync-v0": "*"
   },
   "suggests": {
     "another-mod": "*"

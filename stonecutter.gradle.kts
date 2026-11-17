@@ -13,6 +13,10 @@ allprojects {
             forRepository { maven("https://api.modrinth.com/maven") { name = "Modrinth" } }
             filter { includeGroup("maven.modrinth") }
         }
+        exclusiveContent {
+            forRepository { maven("https://maven.parchmentmc.org") { name = "ParchmentMC" } }
+            filter { includeGroup("org.parchmentmc.data") }
+        }
     }
 }
 
@@ -21,4 +25,14 @@ stonecutter parameters {
 
     properties.tags(version, loader)
     constants.match(loader, "fabric", "neoforge")
+
+    replacements {
+        string(current.parsed >= "1.21.11") {
+            replace("ResourceLocation", "Identifier")
+            replace(
+                "import net.minecraft.world.level.GameRules;",
+                "import net.minecraft.world.level.gamerules.GameRules;"
+            )
+        }
+    }
 }

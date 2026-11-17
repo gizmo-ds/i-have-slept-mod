@@ -1,6 +1,6 @@
 package dev.aika.i_have_slept.neoforge;
 
-//? if neoforge {
+//? if neoforge && >=1.21.11 {
 /*import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.serialization.Codec;
 import net.minecraft.world.flag.FeatureFlagSet;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.gamerules.GameRuleCategory;
 import net.minecraft.world.level.gamerules.GameRuleType;
 import net.minecraft.world.level.gamerules.GameRuleTypeVisitor;
 
-public class IHaveSleptPlatformImpl {
+public class IHaveSleptPlatform {
     public static GameRule<Boolean> registerBoolean(String name, GameRuleCategory category, boolean defaultValue) {
         GameRule<Boolean> rule = new GameRule<>(
                 category, GameRuleType.BOOL, BoolArgumentType.bool(),

@@ -9,6 +9,7 @@ import net.neoforged.fml.common.Mod;
 public final class IHaveSleptNeoForge {
     public IHaveSleptNeoForge(IEventBus modBus) {
         IHaveSlept.init();
+        //? if >=1.21.11
         GameRuleRegistry.GAME_RULE_REGISTER.register(modBus);
     }
 }

@@ -4,7 +4,6 @@ import dev.aika.i_have_slept.IHaveSlept;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
-import net.minecraft.world.level.gamerules.GameRules;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,8 +18,6 @@ import java.util.function.Predicate;
 public abstract class ServerLevelMixin {
     public abstract @Shadow List<ServerPlayer> getPlayers(Predicate<? super ServerPlayer> selector);
 
-    public abstract @Shadow GameRules getGameRules();
-
     @Inject(
             method = "tick",
             at = @At(
@@ -30,7 +27,8 @@ public abstract class ServerLevelMixin {
             )
     )
     private void onTick(BooleanSupplier haveTime, CallbackInfo ci) {
-        if (!this.getGameRules().get(IHaveSlept.BETTER_SERVER_SLEEP)) {
+        if (!((ServerLevel) (Object) this).getGameRules()
+                ./*? if >=1.21.11 {*/get/*?} else {*//*getBoolean*//*?}*/(IHaveSlept.BETTER_SERVER_SLEEP)) {
             return;
         }
         this.getPlayers(player -> {
