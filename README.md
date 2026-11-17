@@ -34,10 +34,6 @@ order to skip the night. However, even when the night is skipped, the sleep coun
 unchanged. This leads to a situation where players who didn't participate in skipping the night will still be targeted
 by phantoms in subsequent nights, despite the night being skipped.
 
-This mod fixes that by resetting the sleep counters for all players after the night is skipped, ensuring no one is
-haunted by phantoms. It makes multiplayer gameplay smoother by ensuring that all players’ sleep statuses are properly
-synced after skipping the night.
-
 ## How to use?
 
 This mod works seamlessly with the `players_sleeping_percentage` gamerule. To use it, simply set the percentage of players
@@ -72,29 +68,6 @@ Set it to `true` to enable the sleep counter reset, or `false` to disable it.
 >
 > On these older versions, the vanilla sleeping percentage rule is also named
 > `playersSleepingPercentage` instead of `players_sleeping_percentage`.
-
-## Building older Minecraft versions
-
-Minecraft 1.19.2 and 1.20.1 are supported on Fabric and Forge (43.5.1 and 47.4.5 respectively).
-Both Minecraft versions target Java 17; Gradle itself requires a newer JDK (use Java 25 with the current wrapper).
-Fabric builds use the existing Loom 1.19.3 remapping plugin selected by loom-back-compat.
-
-```shell
-bash ./gradlew :1.19.2-fabric:build :1.19.2-forge:build :1.20.1-fabric:build :1.20.1-forge:build
-```
-
-The Forge nodes use ModDevGradle's legacy Forge plugin with the
-`net.minecraftforge:forge` artifact. These versions use `net.minecraftforge` packages,
-`META-INF/mods.toml` and SRG mappings, so its release jar is produced by `reobfJar`.
-Mixin refmaps and the `MixinConfigs` manifest entry are included for production loading.
-NeoForge is only targeted for the existing newer Minecraft versions.
-
-On these older versions, the gamerules use their original names:
-
-```shell
-/gamerule playersSleepingPercentage 50
-/gamerule doBetterServerSleep true
-```
 
 ## Sponsors
 

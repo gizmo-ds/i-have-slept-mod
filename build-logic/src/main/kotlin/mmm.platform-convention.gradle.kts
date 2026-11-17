@@ -111,9 +111,7 @@ publishMods {
         accessToken.set(providers.gradleProperty("CURSEFORGE_TOKEN"))
 
         compatibleVersions.forEach { minecraftVersions.add(it) }
-        optional("cloth-config")
         changelogType.set("markdown")
-        client = true
     }
 }
 

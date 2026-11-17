@@ -3,6 +3,12 @@ plugins {
     id("mmm.neoforge-convention")
 }
 
+publishMods {
+    curseforge {
+        server.set(true)
+    }
+}
+
 legacyForge {
     enable { forgeVersion = "deps.forge"() }
     parchment {

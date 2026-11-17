@@ -3,6 +3,13 @@ plugins {
     id("mmm.fabric-convention")
 }
 
+publishMods {
+    curseforge {
+        requires("fabric-api")
+        server.set(true)
+    }
+}
+
 repositories {
     strictMaven("https://maven.terraformersmc.com/", "Terraformers", "com.terraformersmc")
 }

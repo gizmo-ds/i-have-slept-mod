@@ -1,6 +1,12 @@
-### Unreleased
+# Unreleased
 
-### 1.1.2
+# 1.2.0 - 2026-11-18
+
+## Changed
+
+- update the build process; no in-game content changes
+
+# 1.1.2
 
 **NeoForge**
 

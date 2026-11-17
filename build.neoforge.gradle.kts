@@ -3,6 +3,12 @@ plugins {
     id("mmm.neoforge-convention")
 }
 
+publishMods {
+    curseforge {
+        server.set(true)
+    }
+}
+
 neoForge {
     rootProject.file("src/main/resources/META-INF/accesstransformer.cfg").takeIf(File::exists)?.let {
         accessTransformers.from(sc.process(it, "build/processed.cfg"))

@@ -3,7 +3,7 @@ mod:
   id: "i_have_slept"
   name: "I have slept"
   group: "dev.aika.i_have_slept"
-  version: "1.1.2"
+  version: "1.2.0"
   license: "MIT" # https://spdx.org/licenses/
   authors: [ "Gizmo" ]
   contributors: [ ]
@@ -12,6 +12,7 @@ mod:
     homepage: "https://github.com/gizmo-ds/i-have-slept-mod"
     sources: "https://github.com/gizmo-ds/i-have-slept-mod"
     issues: "https://github.com/gizmo-ds/i-have-slept-mod/issues"
+  curseProjectId: "1129410"
 
 # https://fabricmc.net/develop/
 deps.fabric_loader: "0.20.1"
