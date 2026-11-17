@@ -1,7 +1,6 @@
 package dev.aika.i_have_slept.fabric;
 
 //? if fabric && >=1.21.11 {
-import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.serialization.Codec;
 import dev.aika.i_have_slept.IHaveSlept;
 import net.minecraft.core.Registry;
@@ -19,7 +18,10 @@ public class IHaveSleptPlatform {
                 BuiltInRegistries.GAME_RULE,
                 Identifier.fromNamespaceAndPath(IHaveSlept.MOD_ID, name),
                 new GameRule<>(
-                        category, GameRuleType.BOOL, BoolArgumentType.bool(), GameRuleTypeVisitor::visitBoolean,
+                        category, GameRuleType.BOOL, //? if >26.3 {
+                        /*net.minecraft.commands.arguments.BooleanArgument.INSTANCE, *///?} else {
+                        com.mojang.brigadier.arguments.BoolArgumentType.bool(), //?}
+                        GameRuleTypeVisitor::visitBoolean,
                         Codec.BOOL, bool -> bool ? 1 : 0, defaultValue, FeatureFlagSet.of()
                 )
         );
